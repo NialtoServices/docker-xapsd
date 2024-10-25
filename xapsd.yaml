@@ -1,0 +1,29 @@
+# This is the configuration file for xapsd.
+
+# The log level of xapsd. The log level can be set to one of the following values:
+# trace, debug, error, fatal, info (default), panic or warn
+loglevel: info
+
+# xapsd stores device registrations in this JSON file.
+databaseFile: /var/lib/xapsd/database.json
+
+# xapsd listens on this TCP socket for HTTP requests from the Dovecot plugin.
+port: 11619
+
+# Notifications from Dovecot caused by new messages are dispatched immediately, but notifications caused by moving,
+# copying, or deleting messages are delayed for a few seconds. This allows us to batch up multiple notifications and
+# dispatch them all at once, which is more efficient. If a new message arrives during the delay period, the held
+# notifications are dispatched along with the new message notification immediately.
+
+# The interval in seconds to check for delayed messages.
+checkInterval: 20
+
+# The number of seconds to wait before dispatching notifications for events other than new messages.
+delay: 30
+
+# To obtain a certificate from Apple, we need to login with a valid Apple ID.
+#appleId: user@example.com
+
+# The password for the Apple ID. This is not the password itself, but rather a hash of the password to avoid storing
+# the password in plaintext. To calculate the hash, use the `xaps -pass` command.
+#appleIdHashedPassword: ...
